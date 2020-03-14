@@ -9,6 +9,9 @@ public class MouseMovement : MonoBehaviour
 	public Gun                      gun2;
     private Camera                  viewCamera;
 
+	[Header("Audio")]
+	public AudioClip				shootAudioClip;
+
 	void Start()
 	{
 		viewCamera = Camera.main;
@@ -22,10 +25,11 @@ public class MouseMovement : MonoBehaviour
 		transform.LookAt(mousePos + Vector3.up * transform.position.y);
 
         // Weapon
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
 			gun1.Shoot();
 			gun2.Shoot();
+			AudioSource.PlayClipAtPoint(shootAudioClip, Camera.main.transform.position);
 		}
 	}
 }

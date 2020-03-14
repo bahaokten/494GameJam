@@ -8,6 +8,9 @@ public class PlayerBehavior : MonoBehaviour
     public float                    damageTakenTime;
     public Material                 damageTakenMaterial;
 
+    [Header("Audio")]
+    public AudioClip				damageTakenAudioClip;
+
     public void IndicateDamageTaken()
     {
         var indicateDamageCR = StartCoroutine(CRIndicateDamageTaken());
@@ -18,6 +21,8 @@ public class PlayerBehavior : MonoBehaviour
         Material originalMaterial = GetComponent<MeshRenderer>().material;
 
         GetComponent<MeshRenderer>().material = damageTakenMaterial;
+
+        AudioSource.PlayClipAtPoint(damageTakenAudioClip, Camera.main.transform.position);
 
         yield return new WaitForSeconds(damageTakenTime);
 

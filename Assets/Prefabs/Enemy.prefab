@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8223520503873815234}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.07, y: 0.65, z: 0.22}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
@@ -126,4 +126,7 @@ MonoBehaviour:
   enemyDeathEffect: {fileID: 5736624372175607134, guid: d1b0cd34d069843fe96501361cb71758,
     type: 3}
   speed: 1.5
+  score: {fileID: 0}
+  scoreCount: 0
   enemyID: 0
+  destroyedAudioClip: {fileID: 8300000, guid: c914cfb6af5694547844072ac1a5d09e, type: 3}
