@@ -20,7 +20,6 @@ public class EnemyMovement : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("HERE");
         if (other.gameObject.tag == ("Player"))
         {
             Destroy(gameObject);

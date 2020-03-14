@@ -33,7 +33,6 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(interval);
         timer += Time.deltaTime;
         if (timer > 20)
         {
