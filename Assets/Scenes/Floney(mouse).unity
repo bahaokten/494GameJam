@@ -228,7 +228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe192a6e2dff04507996b24a775f34d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GunID: 0
   bullet: {fileID: 4066118274167972862, guid: f59d3ca7a9f084475a57a9ce17043350, type: 3}
+  timeBetweenShoot: 100
+  bulletSpeed: 35
 --- !u!1 &406350782
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +703,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe192a6e2dff04507996b24a775f34d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GunID: 1
   bullet: {fileID: 4066118274167972862, guid: f59d3ca7a9f084475a57a9ce17043350, type: 3}
+  timeBetweenShoot: 100
+  bulletSpeed: 35
 --- !u!1 &1594818848
 GameObject:
   m_ObjectHideFlags: 0
