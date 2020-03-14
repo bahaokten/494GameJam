@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    float speed = 10;
-    //private Rigidbody rigidbody;
-    Vector3 bulletDir;
+    [Header("Data")]
+    public int                          bulletID;
+
+    [Header("Settings")]
+    public float                        speed = 10;
+
+    private Vector3                     bulletDir;
 
 
     void Start()
     {
-        //rigidbody = this.GetComponent<Rigidbody>();
+
     }
 
     private void Update()
     {
-        this.transform.Translate(bulletDir * Time.deltaTime * speed);
+        transform.Translate(bulletDir * Time.deltaTime * speed);
     }
 
     public void SetBulletDirection(Vector3 dir)
@@ -24,17 +28,11 @@ public class Bullet : MonoBehaviour
         bulletDir = dir;
     }
 
+
     public void SetSpeed(float s)
     {
         speed = s;
     }
 
-
-
-    /*
-    private void FixedUpdate()
-    {
-        rigidbody.MovePosition(rigidbody.position + Vector3.forward * Time.fixedDeltaTime);
-    }*/
 
 }

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public bool GunID;
-    public Bullet bullet;
-    public float timeBetweenShoot = 100;
-    public float bulletSpeed = 35;
+    [Header("References")]
+    public Bullet                   bullet;
+
+    [Header("Settings")]
+    public int                      gunID;
+
+    public float                    timeBetweenShoot = 100;
+    public float                    bulletSpeed = 35;
 
     float nextTimeToShoot;
 
@@ -17,15 +21,20 @@ public class Gun : MonoBehaviour
         {
             nextTimeToShoot = Time.time + timeBetweenShoot / 1000;
             Bullet newBullet = Instantiate(bullet, this.transform.position, this.transform.rotation) as Bullet;
-            if (GunID)
+            if (gunID == 1)
             {
-                newBullet.SetBulletDirection(Vector3.up);
+                newBullet.SetBulletDirection(Vector3.down);
+                newBullet.bulletID = gunID;
+
             }
             else
             {
-                newBullet.SetBulletDirection(Vector3.down);
+                newBullet.SetBulletDirection(Vector3.up);
+                newBullet.bulletID = gunID;
             }
+
             newBullet.SetSpeed(bulletSpeed);
+
         }
         
     }
