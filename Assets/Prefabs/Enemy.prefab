@@ -109,7 +109,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.0315778
+  m_Radius: 1.16
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8223520503873815232
 MonoBehaviour:
@@ -126,7 +126,5 @@ MonoBehaviour:
   enemyDeathEffect: {fileID: 5736624372175607134, guid: d1b0cd34d069843fe96501361cb71758,
     type: 3}
   speed: 1.5
-  score: {fileID: 0}
-  scoreCount: 0
   enemyID: 0
   destroyedAudioClip: {fileID: 8300000, guid: c914cfb6af5694547844072ac1a5d09e, type: 3}
