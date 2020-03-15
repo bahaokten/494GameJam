@@ -10,12 +10,13 @@ public class GameControl : MonoBehaviour
 
     [Header("Prefab References")]
     public GameObject                   enemyPrefab;
-
+    public GameObject                   healthPrefab;
     [Header("Settings")]
     public float                        initialHealth = 3f;
     public float                        enemySpawnDist = 11f;
     public Color                        colorPlayer1;
     public Color                        colorPlayer2;
+    public int                          healthSpawnRatio = 3;
 
     [Header("Data")]
     public float                        health;
@@ -25,7 +26,7 @@ public class GameControl : MonoBehaviour
     private float                       timer = 0f;
     private float                       timeSinceLastSpawn = 0f;
     private float                       interval = 2f;
-
+    private int                         lastHealthSpawn;
     private static eGameState _GAME_STATE = eGameState.mainMenu;
 
     public delegate void CallbackDelegate(); // Set up a generic delegate type.
@@ -109,8 +110,38 @@ public class GameControl : MonoBehaviour
         if (timeSinceLastSpawn > interval)
         {
             timeSinceLastSpawn = 0f;
+            if(lastHealthSpawn == healthSpawnRatio){
+                lastHealthSpawn = 0;
+                SpawnHealth();
+            }
+            lastHealthSpawn++;
             SpawnEnemy();
         }
+    }
+
+    void SpawnHealth()
+    {
+        // Set pos and rot of new enemy
+        float randomDist = Random.Range(0f, enemySpawnDist);
+
+        Vector3 pos = RandomCircle(center, randomDist);
+
+        // Spawn new enemy
+        GameObject newHealthObject = Instantiate(healthPrefab, pos, Random.rotation);
+
+        // // Randomly which type of enemy to make the new enemy
+        // randomNumber = Random.Range(0f, 1f);
+
+        // if (randomNumber < 0.5f)
+        // {
+        //     newEnemy.GetComponent<Renderer>().material.SetColor("_Color", colorPlayer1);
+        //     newEnemy.GetComponent<EnemyBehavior>().enemyID = 1;
+        // }
+        // else
+        // {
+        //     newEnemy.GetComponent<Renderer>().material.SetColor("_Color", colorPlayer2);
+        //     newEnemy.GetComponent<EnemyBehavior>().enemyID = 2;
+        // }
     }
 
     void SpawnEnemy()
