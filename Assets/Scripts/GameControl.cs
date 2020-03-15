@@ -125,12 +125,12 @@ public class GameControl : MonoBehaviour
     void SpawnHealth()
     {
         // Set pos and rot of new enemy
-        float randomDist = Random.Range(playerRad, enemySpawnDist-4f);
+        float randomDist = Random.Range(playerRad, enemySpawnDist-6f);
 
         Vector3 pos = RandomCircle(center, randomDist);
 
         // Spawn new enemy
-        GameObject newHealthObject = Instantiate(healthPrefab, pos, Random.rotation);
+        GameObject newHealthObject = Instantiate(healthPrefab, pos, healthPrefab.transform.rotation);
 
 
     }
