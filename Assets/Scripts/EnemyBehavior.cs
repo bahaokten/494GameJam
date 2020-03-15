@@ -40,6 +40,7 @@ public class EnemyBehavior : MonoBehaviour
             AudioSource.PlayClipAtPoint(destroyedAudioClip, Camera.main.transform.position);
             GameObject.Find("GameControl").GetComponent<GameControl>().IncrementScore();
             Destroy(gameObject);
+            Destroy(other.gameObject);
         }
 
         if (other.transform.tag == "Player")

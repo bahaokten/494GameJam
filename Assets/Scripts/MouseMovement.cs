@@ -12,6 +12,9 @@ public class MouseMovement : MonoBehaviour
 	[Header("Audio")]
 	public AudioClip				shootAudioClip;
 
+    public float cooldownTime = 0.25f;
+    private bool isActive = true;
+
 	void Start()
 	{
 		viewCamera = Camera.main;
@@ -25,11 +28,19 @@ public class MouseMovement : MonoBehaviour
 		transform.LookAt(mousePos + Vector3.up * transform.position.y);
 
         // Weapon
-        if (Input.GetMouseButtonDown(0))
+        if (isActive && Input.GetMouseButtonDown(0))
         {
 			gun1.Shoot();
 			gun2.Shoot();
 			AudioSource.PlayClipAtPoint(shootAudioClip, Camera.main.transform.position);
+            isActive = false;
+            StartCoroutine(WaitCooldown());
 		}
 	}
+
+    IEnumerator WaitCooldown()
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        isActive = true;
+    }
 }

@@ -172,23 +172,57 @@ public class GameControl : MonoBehaviour
                 newEnemy.GetComponent<Renderer>().material.SetColor("_Color", colorPlayer2);
                 newEnemy.GetComponent<EnemyBehavior>().enemyID = 2;
             }
+            print(interval);
+            if (interval == 0.75f)
+            {
+                print(interval);
+                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.05f;
+            }
+            else if (interval == 0.5f)
+            {
+                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.10f;
+            }
+            else if (interval == 0.4f)
+            {
+                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.15f;
+            }
+            else if (interval == 0.3f)
+            {
+                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.25f;
+            }
+            else if (interval == 0.3f)
+            {
+                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.30f;
+            }
         }
         
     }
 
     void AdjustSpawnInterval()
     {
-        if (timer > 20)
+        if (timer > 15)
         {
             interval = 1f;
         }
-        else if (timer > 40)
+        if (timer > 30)
         {
             interval = 0.75f;
         }
-        else if (timer > 60)
+        if (timer > 45)
         {
-            interval = 0.5f;
+            interval = 0.65f;
+        }
+        if (timer > 60)
+        {
+            interval = 0.60f;
+        }
+        if (timer > 75)
+        {
+            interval = 0.55f;
+        }
+        if (timer > 80)
+        {
+            interval = 0.50f;
         }
     }
 
