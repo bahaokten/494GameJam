@@ -2060,7 +2060,7 @@ MonoBehaviour:
   enemy2SpawnDist: 5
   colorPlayer1: {r: 0, g: 0, b: 0, a: 0}
   colorPlayer2: {r: 0, g: 0, b: 0, a: 0}
-  healthSpawnRatio: 3
+  healthSpawnRatio: 15
   playerRad: 3
   health: 0
   score: {fileID: 199663394}
