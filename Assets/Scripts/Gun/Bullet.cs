@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour
 {
     [Header("Data")]
     public int                          bulletID;
+    public Material                        materialPlayer1;
+    public Material                        materialPlayer2;
 
     [Header("Settings")]
     public float                        speed = 10;
@@ -15,7 +17,13 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-
+        if (bulletID == 1)
+        {
+            GetComponent<TrailRenderer>().material = materialPlayer1;
+        } else
+        {
+            GetComponent<TrailRenderer>().material = materialPlayer2;
+        }
     }
 
     private void Update()

@@ -41,14 +41,14 @@ public class Gun : MonoBehaviour
 
     IEnumerator AnimateShoot()
     {
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 8; i++)
         {
-            transform.localScale *= 1.04f;
+            transform.localScale *= 1.12f;
             yield return null;
         }
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 8; i++)
         {
-            transform.localScale /= 1.04f;
+            transform.localScale /= 1.12f;
             yield return null;
         }
     }
