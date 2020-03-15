@@ -1043,12 +1043,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475781763}
   m_CullTransparentMesh: 0
---- !u!1 &521306067 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3208509490322716303, guid: 2ff12d64cda694ddba21ce9349bb3ab3,
-    type: 3}
-  m_PrefabInstance: {fileID: 267296752}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &577520902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,7 +2046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8223520503873815234, guid: 83e94f86d67114373ae1e93a906bd64b,
     type: 3}
-  healthPotion: {fileID: 521306067}
+  healthPotion: {fileID: 1868027986}
   laserBeamPrefab: {fileID: 8223520503873815234, guid: 97db565b4950f1e4393b7c0f629abcf0,
     type: 3}
   initialHealth: 3
@@ -2394,6 +2388,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851205847}
   m_CullTransparentMesh: 0
+--- !u!1 &1868027986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3208509490322716303, guid: 2ff12d64cda694ddba21ce9349bb3ab3,
+    type: 3}
+  m_PrefabInstance: {fileID: 267296752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2064615927
 GameObject:
   m_ObjectHideFlags: 0

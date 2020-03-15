@@ -10,7 +10,7 @@ public class GameControl : MonoBehaviour
 
     [Header("Prefab References")]
     public GameObject                   enemyPrefab;
-    public GameObject                   healthPrefab;
+    public GameObject                   healthPotion;
     public GameObject                   laserBeamPrefab;
     [Header("Settings")]
     public float                        initialHealth = 3f;
@@ -18,10 +18,11 @@ public class GameControl : MonoBehaviour
     public float                        enemy2SpawnDist = 11f;
     public Color                        colorPlayer1;
     public Color                        colorPlayer2;
-    public int                          healthSpawnRatio = 3;
+    public int                          healthSpawnRatio = 15;
     public float                        playerRad = 3f;
     [Header("Data")]
     public float                        health;
+    public Text                         score;
 
     private Vector3                     center;
     private float                       randomNumber;
@@ -30,6 +31,7 @@ public class GameControl : MonoBehaviour
     private float                       interval = 2f;
     private int                         lastHealthSpawn;
     private bool                        isBeamSpawned = false;
+    private int                         scoreCount = 0;
     private static eGameState _GAME_STATE = eGameState.mainMenu;
 
     public delegate void CallbackDelegate(); // Set up a generic delegate type.
@@ -129,10 +131,9 @@ public class GameControl : MonoBehaviour
 
         Vector3 pos = RandomCircle(center, randomDist);
 
-        // Spawn new enemy
-        GameObject newHealthObject = Instantiate(healthPrefab, pos, healthPrefab.transform.rotation);
-
-
+        // Spawn new health
+        healthPotion.SetActive(true);
+        healthPotion.transform.position = pos;
     }
 
     IEnumerator WaitForBeam()
@@ -220,5 +221,10 @@ public class GameControl : MonoBehaviour
 
         if (HEALTH_CHANGE_DELEGATE != null) HEALTH_CHANGE_DELEGATE();
 
+    }
+    public void IncrementScore()
+    {
+        scoreCount++;
+        score.text = scoreCount.ToString();
     }
 }

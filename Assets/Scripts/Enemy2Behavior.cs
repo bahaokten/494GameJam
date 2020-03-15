@@ -91,6 +91,7 @@ public class Enemy2Behavior : MonoBehaviour
     IEnumerator DoCountDownToDespawn()
     {
         yield return new WaitForSeconds(5);
+        GameObject.Find("GameControl").GetComponent<GameControl>().IncrementScore();
         Destroy(this.gameObject);
     }
 }

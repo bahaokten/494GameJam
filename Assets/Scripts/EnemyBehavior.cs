@@ -38,6 +38,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             SpawnDeathEffect();
             AudioSource.PlayClipAtPoint(destroyedAudioClip, Camera.main.transform.position);
+            GameObject.Find("GameControl").GetComponent<GameControl>().IncrementScore();
             Destroy(gameObject);
         }
 

@@ -25,7 +25,7 @@ public class healthPowerupBehaviour : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(destroyedAudioClip, Camera.main.transform.position);
             GameControl.Instance.AddHealth(1f);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
 
