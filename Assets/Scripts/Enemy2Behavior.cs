@@ -34,7 +34,7 @@ public class Enemy2Behavior : MonoBehaviour
     {
         transform.LookAt(Vector3.zero, Vector3.up);
         transform.Rotate(new Vector3(0,-90,0));
-        speedVector = speed * (new Vector3(-transform.position.x, transform.position.y, -transform.position.z)).normalized;
+        speedVector = speed * (new Vector3(-transform.position.x, 0, -transform.position.z)).normalized;
         StartCoroutine(DoCountdownToShoot());
     }
 

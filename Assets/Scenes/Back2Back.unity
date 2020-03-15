@@ -1713,14 +1713,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244476690}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.70742023, z: -0, w: 0.7067932}
+  m_LocalPosition: {x: -0.015630249, y: 0, z: -0.7149926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 328177376}
   m_Father: {fileID: 1741098740}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.051, z: 0}
 --- !u!54 &1244476695
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1978,9 +1978,11 @@ MonoBehaviour:
     type: 3}
   initialHealth: 3
   enemySpawnDist: 11
+  enemy2SpawnDist: 5
   colorPlayer1: {r: 0, g: 0, b: 0, a: 0}
   colorPlayer2: {r: 0, g: 0, b: 0, a: 0}
   healthSpawnRatio: 3
+  playerRad: 3
   health: 0
 --- !u!4 &1568572204
 Transform:
@@ -2024,14 +2026,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594818848}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.70742023, z: -0, w: 0.7067932}
+  m_LocalPosition: {x: -0.0143944435, y: 0, z: 0.6850059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1308892034}
   m_Father: {fileID: 1741098740}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.051, z: 0}
 --- !u!136 &1594818850
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class GameControl : MonoBehaviour
     [Header("Settings")]
     public float                        initialHealth = 3f;
     public float                        enemySpawnDist = 11f;
+    public float                        enemy2SpawnDist = 11f;
     public Color                        colorPlayer1;
     public Color                        colorPlayer2;
     public int                          healthSpawnRatio = 3;
@@ -28,6 +29,7 @@ public class GameControl : MonoBehaviour
     private float                       timeSinceLastSpawn = 0f;
     private float                       interval = 2f;
     private int                         lastHealthSpawn;
+    private bool                        isBeamSpawned = false;
     private static eGameState _GAME_STATE = eGameState.mainMenu;
 
     public delegate void CallbackDelegate(); // Set up a generic delegate type.
@@ -133,28 +135,44 @@ public class GameControl : MonoBehaviour
 
     }
 
+    IEnumerator WaitForBeam()
+    {
+        isBeamSpawned = true;
+        yield return new WaitForSeconds(8f);
+        isBeamSpawned = false;
+    }
+
     void SpawnEnemy()
     {
-        // Set pos and rot of new enemy
-        Vector3 pos = RandomCircle(center, enemySpawnDist);
-        Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
-
-        // Spawn new enemy
-        GameObject newEnemy = Instantiate(laserBeamPrefab, pos, rot);
-
-        // Randomly which type of enemy to make the new enemy
-        randomNumber = Random.Range(0f, 1f);
-
-        if (randomNumber < 0.5f)
+        if (!isBeamSpawned && Random.value < 0.3f)
         {
-            newEnemy.GetComponent<Renderer>().material.SetColor("_Color", colorPlayer1);
-            newEnemy.GetComponent<EnemyBehavior>().enemyID = 1;
-        }
-        else
+            Vector3 pos = RandomCircle(center, enemy2SpawnDist, 0.1f);
+            GameObject newEnemy = Instantiate(laserBeamPrefab, pos, Quaternion.identity);
+            StartCoroutine(WaitForBeam());
+        } else
         {
-            newEnemy.GetComponent<Renderer>().material.SetColor("_Color", colorPlayer2);
-            newEnemy.GetComponent<EnemyBehavior>().enemyID = 2;
+            // Set pos and rot of new enemy
+            Vector3 pos = RandomCircle(center, enemySpawnDist);
+            Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
+
+            // Spawn new enemy
+            GameObject newEnemy = Instantiate(enemyPrefab, pos, rot);
+
+            // Randomly which type of enemy to make the new enemy
+            randomNumber = Random.Range(0f, 1f);
+
+            if (randomNumber < 0.5f)
+            {
+                newEnemy.GetComponent<Renderer>().material.SetColor("_Color", colorPlayer1);
+                newEnemy.GetComponent<EnemyBehavior>().enemyID = 1;
+            }
+            else
+            {
+                newEnemy.GetComponent<Renderer>().material.SetColor("_Color", colorPlayer2);
+                newEnemy.GetComponent<EnemyBehavior>().enemyID = 2;
+            }
         }
+        
     }
 
     void AdjustSpawnInterval()
@@ -173,12 +191,12 @@ public class GameControl : MonoBehaviour
         }
     }
 
-    Vector3 RandomCircle (Vector3 center, float radius)
+    Vector3 RandomCircle (Vector3 center, float radius, float setY = 0.65f)
     {
         float ang = Random.value * 360;
         Vector3 pos;
         pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
-        pos.y = 0.65f;
+        pos.y = setY;
         pos.z = center.z + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
         return pos;
     }
