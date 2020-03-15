@@ -4,5 +4,8 @@ https://answers.unity.com/questions/714835/best-way-to-spawn-prefabs-in-a-circle
 Sound effect
 https://opengameart.org/content/8-bit-sound-effects-library
 
-Health potion
-https://assetstore.unity.com/packages/3d/props/potions-coin-and-box-of-pandora-pack-71778
+Heart
+https://free3d.com/3d-model/valentine39s-day-heart-69073.html
+
+Laser Sound effect
+https://opengameart.org/content/laser-rifle

@@ -38,10 +38,10 @@ public class PlayerBehavior : MonoBehaviour
             yield break;
         }
         RectTransform rt = healthBar.GetComponent<RectTransform>();
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 8; i++)
         {
             rt.localScale = new Vector3(rt.localScale.x * 1.02f, rt.localScale.y * 1.04f, rt.localScale.z);
-            if (i < 10)
+            if (i < 4)
             {
                 rt.Rotate(new Vector3(0, 0, 5));
             } else
@@ -50,10 +50,10 @@ public class PlayerBehavior : MonoBehaviour
             }
             yield return null;
         }
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 8; i++)
         {
             rt.localScale = new Vector3(rt.localScale.x / 1.02f, rt.localScale.y / 1.04f, rt.localScale.z);
-            if (i < 10)
+            if (i < 4)
             {
                 rt.Rotate(new Vector3(0, 0, 2));
             }
