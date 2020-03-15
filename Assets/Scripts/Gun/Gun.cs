@@ -34,8 +34,22 @@ public class Gun : MonoBehaviour
             }
 
             newBullet.SetSpeed(bulletSpeed);
-
+            StartCoroutine(AnimateShoot());
         }
         
+    }
+
+    IEnumerator AnimateShoot()
+    {
+        for(int i = 0; i < 20; i++)
+        {
+            transform.localScale *= 1.04f;
+            yield return null;
+        }
+        for (int i = 0; i < 20; i++)
+        {
+            transform.localScale /= 1.04f;
+            yield return null;
+        }
     }
 }
