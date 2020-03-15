@@ -220,7 +220,6 @@ public class GameControl : MonoBehaviour
         {
             interval = 0.75f;
         }
-        interval = 0.75f;
     }
 
     Vector3 RandomCircle (Vector3 center, float radius, float setY = 0.65f)
