@@ -257,4 +257,9 @@ public class GameControl : MonoBehaviour
         scoreCount++;
         score.text = scoreCount.ToString();
     }
+
+    public int GetScore()
+    {
+        return scoreCount;
+    }
 }

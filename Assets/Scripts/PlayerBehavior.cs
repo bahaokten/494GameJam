@@ -33,6 +33,10 @@ public class PlayerBehavior : MonoBehaviour
 
     private IEnumerator HealthBarIndicateDamageTaken()
     {
+        if (healthBar == null)
+        {
+            yield break;
+        }
         RectTransform rt = healthBar.GetComponent<RectTransform>();
         for (int i = 0; i < 20; i++)
         {
