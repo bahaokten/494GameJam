@@ -11,6 +11,7 @@ public class GameControl : MonoBehaviour
     [Header("Prefab References")]
     public GameObject                   enemyPrefab;
     public GameObject                   healthPrefab;
+    public GameObject                   laserBeamPrefab;
     [Header("Settings")]
     public float                        initialHealth = 3f;
     public float                        enemySpawnDist = 11f;
@@ -151,7 +152,7 @@ public class GameControl : MonoBehaviour
         Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
 
         // Spawn new enemy
-        GameObject newEnemy = Instantiate(enemyPrefab, pos, rot);
+        GameObject newEnemy = Instantiate(laserBeamPrefab, pos, rot);
 
         // Randomly which type of enemy to make the new enemy
         randomNumber = Random.Range(0f, 1f);
