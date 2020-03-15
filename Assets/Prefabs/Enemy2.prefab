@@ -211,7 +211,8 @@ MonoBehaviour:
   beam: {fileID: 2429653215113394454}
   speed: 15
   enemyID: 0
-  destroyedAudioClip: {fileID: 0}
+  destroyedAudioClip: {fileID: 8300000, guid: c914cfb6af5694547844072ac1a5d09e, type: 3}
+  spawnWhoosh: {fileID: 8300000, guid: 20733c52129f3184fb925e78d3f9effc, type: 3}
 --- !u!65 &322868003080021981
 BoxCollider:
   m_ObjectHideFlags: 0

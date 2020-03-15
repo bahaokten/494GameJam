@@ -113,7 +113,7 @@ public class GameControl : MonoBehaviour
         AdjustSpawnInterval();
 
         // Spawn enemy each interval
-        if (timeSinceLastSpawn > interval)
+        if (timeSinceLastSpawn > interval && ableToSpawn)
         {
             timeSinceLastSpawn = 0f;
             if(lastHealthSpawn == healthSpawnRatio){
@@ -182,7 +182,6 @@ public class GameControl : MonoBehaviour
                 newEnemy.GetComponent<Renderer>().material.SetColor("_Color", colorPlayer2);
                 newEnemy.GetComponent<EnemyBehavior>().enemyID = 2;
             }
-            print(interval);
             if (interval <= 1f)
             {
                 print(interval);

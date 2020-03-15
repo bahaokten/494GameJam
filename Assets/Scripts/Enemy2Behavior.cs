@@ -18,6 +18,7 @@ public class Enemy2Behavior : MonoBehaviour
 
     [Header("Audio")]
     public AudioClip				        destroyedAudioClip;
+    public AudioClip                        spawnWhoosh;
 
     private State                           currentState = State.countdown;
     private Vector3                         speedVector;
@@ -84,6 +85,7 @@ public class Enemy2Behavior : MonoBehaviour
         enemyCanvas.GetComponentInChildren<Text>().enabled = false;
         enemyCanvas.GetComponentInChildren<Image>().enabled = false;
         currentState = State.shoot;
+        AudioSource.PlayClipAtPoint(spawnWhoosh, Camera.main.transform.position + Vector3.down * 3);
         beam.SetActive(true);
         StartCoroutine(DoCountDownToDespawn());
     }
