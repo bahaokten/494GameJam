@@ -209,7 +209,7 @@ MonoBehaviour:
     type: 3}
   enemyCanvas: {fileID: 2250794886863151659}
   beam: {fileID: 2429653215113394454}
-  speed: 0.1
+  speed: 15
   enemyID: 0
   destroyedAudioClip: {fileID: 0}
 --- !u!65 &322868003080021981

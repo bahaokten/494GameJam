@@ -43,7 +43,7 @@ public class Enemy2Behavior : MonoBehaviour
     {
         if (currentState == State.shoot)
         {
-            transform.position += speedVector;
+            transform.position += speedVector * Time.deltaTime;
         }
     }
 
@@ -90,7 +90,7 @@ public class Enemy2Behavior : MonoBehaviour
 
     IEnumerator DoCountDownToDespawn()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         GameObject.Find("GameControl").GetComponent<GameControl>().IncrementScore();
         Destroy(this.gameObject);
     }

@@ -31,6 +31,7 @@ public class GameControl : MonoBehaviour
     private float                       interval = 2f;
     private int                         lastHealthSpawn;
     private bool                        isBeamSpawned = false;
+    private bool                        ableToSpawn = true;
     private int                         scoreCount = 0;
     private static eGameState _GAME_STATE = eGameState.mainMenu;
 
@@ -143,6 +144,12 @@ public class GameControl : MonoBehaviour
         isBeamSpawned = false;
     }
 
+    IEnumerator SpawnCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        ableToSpawn = true;
+    }
+
     void SpawnEnemy()
     {
         if (!isBeamSpawned && Random.value < 0.3f)
@@ -150,7 +157,10 @@ public class GameControl : MonoBehaviour
             Vector3 pos = RandomCircle(center, enemy2SpawnDist, 0.1f);
             GameObject newEnemy = Instantiate(laserBeamPrefab, pos, Quaternion.identity);
             StartCoroutine(WaitForBeam());
-        } else
+            ableToSpawn = false;
+            StartCoroutine(SpawnCooldown());
+        }
+        else
         {
             // Set pos and rot of new enemy
             Vector3 pos = RandomCircle(center, enemySpawnDist);
@@ -173,57 +183,45 @@ public class GameControl : MonoBehaviour
                 newEnemy.GetComponent<EnemyBehavior>().enemyID = 2;
             }
             print(interval);
-            if (interval == 0.75f)
+            if (interval <= 1f)
             {
                 print(interval);
-                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.05f;
+                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.04f;
             }
-            else if (interval == 0.5f)
+            if (interval <= 0.85f)
             {
-                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.10f;
+                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.08f;
             }
-            else if (interval == 0.4f)
+            if (interval <= 0.75f)
             {
-                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.15f;
-            }
-            else if (interval == 0.3f)
-            {
-                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.25f;
-            }
-            else if (interval == 0.3f)
-            {
-                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.30f;
+                newEnemy.GetComponent<EnemyBehavior>().speed *= 1.12f;
             }
         }
-        
     }
 
     void AdjustSpawnInterval()
     {
-        if (timer > 15)
+        if (timer > 25)
         {
             interval = 1f;
         }
-        if (timer > 30)
+        if (timer > 40)
+        {
+            interval = 0.95f;
+        }
+        if (timer > 55)
+        {
+            interval = 0.85f;
+        }
+        if (timer > 70)
+        {
+            interval = 0.80f;
+        }
+        if (timer > 85)
         {
             interval = 0.75f;
         }
-        if (timer > 45)
-        {
-            interval = 0.65f;
-        }
-        if (timer > 60)
-        {
-            interval = 0.60f;
-        }
-        if (timer > 75)
-        {
-            interval = 0.55f;
-        }
-        if (timer > 80)
-        {
-            interval = 0.50f;
-        }
+        interval = 0.75f;
     }
 
     Vector3 RandomCircle (Vector3 center, float radius, float setY = 0.65f)
