@@ -17,7 +17,7 @@ public class GameControl : MonoBehaviour
     public Color                        colorPlayer1;
     public Color                        colorPlayer2;
     public int                          healthSpawnRatio = 3;
-
+    public float                        playerRad = 3f;
     [Header("Data")]
     public float                        health;
 
@@ -122,26 +122,14 @@ public class GameControl : MonoBehaviour
     void SpawnHealth()
     {
         // Set pos and rot of new enemy
-        float randomDist = Random.Range(0f, enemySpawnDist);
+        float randomDist = Random.Range(playerRad, enemySpawnDist-4f);
 
         Vector3 pos = RandomCircle(center, randomDist);
 
         // Spawn new enemy
         GameObject newHealthObject = Instantiate(healthPrefab, pos, Random.rotation);
 
-        // // Randomly which type of enemy to make the new enemy
-        // randomNumber = Random.Range(0f, 1f);
 
-        // if (randomNumber < 0.5f)
-        // {
-        //     newEnemy.GetComponent<Renderer>().material.SetColor("_Color", colorPlayer1);
-        //     newEnemy.GetComponent<EnemyBehavior>().enemyID = 1;
-        // }
-        // else
-        // {
-        //     newEnemy.GetComponent<Renderer>().material.SetColor("_Color", colorPlayer2);
-        //     newEnemy.GetComponent<EnemyBehavior>().enemyID = 2;
-        // }
     }
 
     void SpawnEnemy()
@@ -204,5 +192,14 @@ public class GameControl : MonoBehaviour
         {
             GAME_STATE = eGameState.gameOver;
         }
+    }
+    public void AddHealth(float healthDeducted)
+    {
+        if(health < initialHealth){
+            health += healthDeducted;
+        }
+
+        if (HEALTH_CHANGE_DELEGATE != null) HEALTH_CHANGE_DELEGATE();
+
     }
 }
